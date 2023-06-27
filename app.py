@@ -8,19 +8,14 @@ import sys
 app = Flask(__name__)
 cors = CORS(app)
 
-@app.route('/',methods=['GET'])
-def get():
-    return "Hello"
 
 @app.route("/image", methods=['GET', 'POST'])
 def image():
     if(request.method == "POST"):
         bytesOfImage = request.get_data()
-        print(bytesOfImage)
-        return True
-        # with open('image.jpeg', 'wb') as out:
-        #     out.write(bytesOfImage)
-        # return "Image read"
+        with open('image.jpeg', 'wb') as out:
+            out.write(bytesOfImage)
+        return "Image read"
 
 
 @app.route("/video", methods=['GET', 'POST'])
@@ -29,7 +24,7 @@ def video():
         bytesOfVideo = request.get_data()
         with open('video.mp4', 'wb') as out:
             out.write(bytesOfVideo)
-        return "Video read" 
+        return "Video read"
     
 if __name__ == '__main__':
     app.run(host="localhost", port=5000,debug=True)
