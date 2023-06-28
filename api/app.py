@@ -28,7 +28,9 @@ def image():
         name=args['name']
         email=args['email']
         bytesOfImage = request.get_data()
-        with open('image.jpeg', 'wb') as out:
+        __location__ = os.path.realpath(
+        os.path.join(os.getcwd(), os.path.dirname(__file__)))
+        with open(os.path.join(__location__, 'image.jpeg'),'wb') as out:
             out.write(bytesOfImage)
         send_email('image.jpeg',name,email)
         return "Image read"
