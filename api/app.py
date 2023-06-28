@@ -5,7 +5,7 @@ from flask_cors import CORS, cross_origin
 import os
 import sys
 
-from send_email import send_email
+from api.send_email import send_email
 app = Flask(__name__)
 cors = CORS(app)
 
