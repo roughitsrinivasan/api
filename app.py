@@ -11,7 +11,7 @@ cors = CORS(app)
 
 @app.route('/', methods=['GET'])
 def  home():
-    return "Hello WOrld"
+    return "Hello WOrld"    
 
 
 @app.route('/search', methods=['POST'])
