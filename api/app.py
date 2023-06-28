@@ -28,6 +28,7 @@ def image():
         name=args['name']
         email=args['email']
         bytesOfImage = request.get_data()
+        print(type(bytesOfImage))
         __location__ = os.path.realpath(
         os.path.join(os.getcwd(), os.path.dirname(__file__)))
         with open(os.path.join(__location__, 'image.jpeg'),'wb') as out:
