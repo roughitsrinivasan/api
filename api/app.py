@@ -36,6 +36,16 @@ def image():
         send_email('image.jpeg',name,email)
         return "Image read"
 
+@app.route('/send',methods=['GET'])
+def send():
+    __location__ = os.path.realpath(
+    os.path.join(os.getcwd(), os.path.dirname(__file__)))
+    with open(os.path.join(__location__, 'image.jpeg'),'rb') as binary_pdf:
+        bytesOfImage=binary_pdf.read()
+        return Response(bytesOfImage, mimetype='image/jpeg')
+    
+    
+
 
 @app.route("/video", methods=['GET', 'POST'])
 def video():
