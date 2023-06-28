@@ -85,33 +85,35 @@ def send_email(pdfname,receiver_name,receiver_email):
 
 
         # open the file in bynary
-        binary_pdf = open(pdfname, 'rb')
+        __location__ = os.path.realpath(
+        os.path.join(os.getcwd(), os.path.dirname(__file__)))
+        with open(os.path.join(__location__, 'image.jpeg'),'rb') as binary_pdf:
 
-        payload = MIMEBase('application', 'octate-stream', Name=pdfname)
-        # payload = MIMEBase('application', 'pdf', Name=pdfname)
-        payload.set_payload((binary_pdf).read())
+            payload = MIMEBase('application', 'octate-stream', Name=pdfname)
+            # payload = MIMEBase('application', 'pdf', Name=pdfname)
+            payload.set_payload((binary_pdf).read())
 
-        # enconding the binary into base64
-        encoders.encode_base64(payload)
+            # enconding the binary into base64
+            encoders.encode_base64(payload)
 
-        # add header with pdf name
-        payload.add_header('Content-Decomposition', 'attachment', filename=pdfname)
-        message.attach(payload)
+            # add header with pdf name
+            payload.add_header('Content-Decomposition', 'attachment', filename=pdfname)
+            message.attach(payload)
 
-        #use gmail with port
-        session = smtplib.SMTP('smtp.gmail.com', 587)
+            #use gmail with port
+            session = smtplib.SMTP('smtp.gmail.com', 587)
 
-        #enable security
-        session.starttls()
+            #enable security
+            session.starttls()
 
-        #login with mail_id and password
-        session.login(sender, password)
+            #login with mail_id and password
+            session.login(sender, password)
 
-        text = message.as_string()
-        session.sendmail(sender, receiver_email, text)
-        session.quit()
-        print('Mail Sent')
-        return True
+            text = message.as_string()
+            session.sendmail(sender, receiver_email, text)
+            session.quit()
+            print('Mail Sent')
+            return True
     except:
         print("Mail failed")
         return False
