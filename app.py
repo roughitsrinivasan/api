@@ -9,9 +9,10 @@ from send_email import send_email
 app = Flask(__name__)
 cors = CORS(app)
 
-@app.route('/):
-def home():
-    return "Hello"
+@app.route('/', methods=['GET'])
+def  home():
+    return "Hello WOrld"
+
 
 @app.route('/search', methods=['POST'])
 def index():
