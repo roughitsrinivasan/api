@@ -47,6 +47,7 @@ def image():
         args = request.args
         name=args.get('name')
         email=args.get('email')
+        print('sending ',name,' to ',email)
         if name is None:
             return "Name is not provided"
         if email is None:
