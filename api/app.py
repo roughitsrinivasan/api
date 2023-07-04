@@ -82,7 +82,7 @@ def send_email(receiver_name,receiver_email,binary_img):
     Hello, {receiver_name}
     Welcome to SJCE 
     Yours Friendly
-    Prakash Annanin Vizhudhugal
+    
     '''
     # put your email here
     sender = 'yuvibro1211@gmail.com'
